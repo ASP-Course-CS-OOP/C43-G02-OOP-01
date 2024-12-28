@@ -8,6 +8,31 @@
             //WeekDays DaysOfWeek = (WeekDays)127;
             //Console.WriteLine(DaysOfWeek);
             #endregion
+
+            #region 2.Create an enum called "Seas on" with the four seasons (Spring, Summer, Autumn, Winter) as  its members. Write a C# program that takes a season name as input from the user and displays the corresponding month range for that season. Note range for seasons ( spring march to may , summer june to august , autumn September to November , winter December to February)
+            //bool isParsed = Enum.TryParse<Season>(Console.ReadLine(), true, out Season season);
+
+            //if (isParsed)
+            //{
+            //    switch (season)
+            //    {
+            //        case Season.Spring:
+            //            Console.WriteLine("March to May");
+            //            break;
+            //        case Season.Summer:
+            //            Console.WriteLine("June to August");
+            //            break;
+            //        case Season.Autumn:
+            //            Console.WriteLine("September to November");
+            //            break;
+            //        case Season.Winter:
+            //            Console.WriteLine("December to February");
+            //            break;
+            //    }
+            //}
+            //else
+            //    Console.WriteLine("Not Recognized Season Name");
+            #endregion
         }
     }
 }
