@@ -33,6 +33,20 @@
             //else
             //    Console.WriteLine("Not Recognized Season Name");
             #endregion
+
+            #region 3. Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum.
+            //Permission permission = (Permission)3;
+            //Console.WriteLine(permission);//Read Write
+            //permission |= Permission.Delete;
+            //Console.WriteLine(permission);//Read Write Delete
+            //permission &= ~Permission.Delete;
+            //Console.WriteLine(permission);//Read Write      
+
+            //if((permission & Permission.Delete) == Permission.Delete) //0011 & 1000  0000
+            //    Console.WriteLine("You Have Delete Permission");
+            //else
+            //    Console.WriteLine("You Don't Have Delete Permission");
+            #endregion
         }
     }
 }
