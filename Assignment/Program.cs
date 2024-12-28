@@ -47,6 +47,18 @@
             //else
             //    Console.WriteLine("You Don't Have Delete Permission");
             #endregion
+
+            #region 4. Create an enum called "Colors" with the basic colors (Red, Green, Blue) as its members. Write a C# program that takes a color name as input from the user and displays a message indicating whether the input color is a primary color or not.
+            //bool isParsed = Enum.TryParse<Colors>(Console.ReadLine(), true, out Colors color);
+
+            //if (isParsed)
+            //{
+            //    if(color == Colors.Red || color == Colors.Blue || color == Colors.Green)
+            //        Console.WriteLine($"{color} is Primary Color");
+            //}
+            //else
+            //    Console.WriteLine("not primary color");
+            #endregion
         }
     }
 }
