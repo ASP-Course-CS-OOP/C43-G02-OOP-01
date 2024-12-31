@@ -216,7 +216,7 @@ namespace Common
         #endregion
         #endregion
 
-        #region Part 07 Namespace Members - Delegate
+    #region Part 07 Namespace Members - Delegate
         //Reference/Variable From Delegate Refer(Hold) Address Of Function
         public delegate string func(int num1,int num2);
         //string -> ReturnType Of The Function That Delegate(func) Refer To.
@@ -229,6 +229,24 @@ namespace Common
         //};
         // Console.WriteLine(fun01(5, 10));
 
+        #endregion
+
+    #region Part 08 Namespace Members - Record [ C# 9.0 ]
+        //Record Like Class,Struct But In Abbreviation (One Line).
+        public record Person01(int Id,string Name);//Automatically, Properties & Constructor Generated
+        //This Line Like I Made This Class => 
+
+        public class Person02
+        {
+            public int Id { get; set; }
+            public string Name { get; set; } //Property
+
+            public Person02(int id,string name)//Constructor
+            {
+                Id = id;
+                Name = name;
+            }
+        }
         #endregion
 
     }
