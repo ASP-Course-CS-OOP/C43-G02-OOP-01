@@ -268,5 +268,20 @@ namespace Common
 
     #endregion
 
+    #region Part 11 Access Modifiers (private, internal, public) Inside Members Of Namespace
+    public class TypeR
+    {
+        private int X;//This Field Accessed Only Inside This Class ( TypeR ) .
+        internal int Y;//This Field Accessed Only Inside This Project [ Common ], Not In Another Project Even If Another Project Import This Project.
+        public int Z;//This Field Accessed Every Where( Inside Project [ Common ] & Another Projects [ Demo - Assignment ] ).
+
+        public void AccessX()
+        {
+            Console.WriteLine(this.X); ;//Access (X) Only Inside The Class.[this mean That This X is object Member]. 
+        }
+        // [ X,Y,Z ] => Are object Members Fields Not Class Members [Mean That I Can Call Those Fields Only Throw Object From Class (TypeR) ].
+    }
+    #endregion
+
 }
 

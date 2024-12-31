@@ -61,6 +61,16 @@ namespace Demo
 
             #endregion
 
+            #region Part 11 Access Modifiers (private, internal, public) Inside Members Of Namespace
+            TypeR objR = new TypeR();//You Allowed To Make object From This Class "TypeR" because It's public in "Common" Project.
+            //objR.X = 10;//Error, Because The Field (X) Inside The Class (TypeR) is Private. 
+            //objR.Y = 10;//Error, Because The Field (Y) Inside The Class (TypeR) is internal, Mean That Accessed Only Inside The Project ( Common ).  
+            objR.Z = 10;//Can Access Field (Z) Because it's public, Mean That it Accessed EveryWhere Inside & Outside The Project (Common).
+            Console.WriteLine(objR.Z);//10
+
+            objR.AccessX();//0 => Because The Default Value Of int Field is (0).
+            #endregion
+
         }
     }
 }
