@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.AccessControl;
-using Common;//I make It Global Using
+using Common;//I make It "Common" Global Using In Properties OF "Demo" Project => So I Can Use Items Of This Name Space Inside Any File OF "Demo" Project Without Writing "Using Common". 
 using static Common.IExample;
 namespace Demo
 {
@@ -41,8 +41,6 @@ namespace Demo
             //    }; 
             //Console.WriteLine(fun01(5, 10));
             #endregion
-
-
 
         }
     }
