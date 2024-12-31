@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.AccessControl;
-using Common;
+using Common;//I make It Global Using
 using static Common.IExample;
 namespace Demo
 {
