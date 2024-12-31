@@ -4,8 +4,22 @@ using Common;//I make It "Common" Global Using In Properties OF "Demo" Project =
 using static Common.IExample;
 namespace Demo
 {
-    internal class Program
+    internal class Program:/*EmployeeBase03,*/EmployeeBase04
     {
+        #region part 12 [private protected]
+        public void DisplayAge03()
+        {
+            //Console.WriteLine(Age);//[Not Valid] => Can't Access The Field "Age" Because it's "private protected" mean that i can access it only in classes inherit from EmployeeBase03 && in the same project(Common) and i now in (Demo) Project. 
+        }
+        #endregion
+
+        #region part 12 [protected]
+        public void DisplayAge04()
+        {
+            Console.WriteLine(Age);//[Valid] => Could Access The Field "Age" Because it's "protected" mean that i can access it in classes inherit from EmployeeBase03 Regardless in same assemply/project or not and i in different project (Demo).
+        }
+        #endregion
+
         static void Main(string[] args)
         {
             #region Part 01 What Is Class Library
@@ -71,6 +85,12 @@ namespace Demo
             objR.AccessX();//0 => Because The Default Value Of int Field is (0).
             #endregion
 
+            #region part 12 [internal Method Inside Parent Class And Take object from Child Class That Inherit From Base Class And Try to Access The internal Method inside The Parent Class throw Child class but in different project [Demo]] [Invalid => Method is internal]
+            //PartTimeEmployee04 p04 = new PartTimeEmployee04();
+            //p04.DisplayID();// DisplayId() Method is internal in BaseClass (EmployeeBase04) So you Can Access It Only Throw Object From Class Inherit From EmployeeBase04 But In Same Assemply/Project (Common) Only.
+            #endregion
+
+        
         }
     }
 }

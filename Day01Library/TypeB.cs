@@ -6,8 +6,22 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    internal class TypeB // Internal[Default] => Mean That You Can Use This Class Inside The (Same Assembly) (Same Project) Only.
+    internal class TypeB:/*EmployeeBase03,*/EmployeeBase04// Internal[Default] => Mean That You Can Use This Class Inside The (Same Assembly) (Same Project) Only.
     {
+        #region part 12 [private protected]
+        public void DisplayAge()
+        {
+            Console.WriteLine(Age);//[Valid] => Could Access The Field "Age" Because it's "private protected" mean that i can access it only in classes inherit from EmployeeBase03 && in the same project(Common) and i now in (Common) Project. 
+        }
+        #endregion
+
+        #region part 12 [protected]
+        public void DisplayAge04()
+        {
+            Console.WriteLine(Age);//[Valid] => Could Access The Field "Age" Because it's "protected" mean that i can access it in classes inherit from EmployeeBase03 Regardless in same assemply/project or not and i in Same project (Common).
+        }
+        #endregion
+
         public TypeB() //Constructor => Special Method That Called When You Create Object From This Class, Not Has Return Type, it's Name Like ClassName.
         {
             #region Part 02 What are Access Modifiers
