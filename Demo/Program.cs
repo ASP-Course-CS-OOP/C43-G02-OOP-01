@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.AccessControl;
 using Common;
+using static Common.IExample;
 namespace Demo
 {
     internal class Program
@@ -33,6 +34,13 @@ namespace Demo
             //TypeC typeCobj = new TypeC();//Error, Because TypeC Class Access Modifier Is [File], So We Can Use It Inside The Same File Only [TypeB.cs], Not In Another Place Like Another Project [Demo]. 
             #endregion
 
+            #region Part 07 Namespace Members - Delegate
+            //func fun01 = delegate (int num1, int num2)
+            //    {
+            //        return $"Summ => {num1 + num2}";
+            //    }; 
+            //Console.WriteLine(fun01(5, 10));
+            #endregion
 
         }
     }

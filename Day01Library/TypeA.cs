@@ -216,5 +216,20 @@ namespace Common
         #endregion
         #endregion
 
+        #region Part 07 Namespace Members - Delegate
+        //Reference/Variable From Delegate Refer(Hold) Address Of Function
+        public delegate string func(int num1,int num2);
+        //string -> ReturnType Of The Function That Delegate(func) Refer To.
+        //func -> DelegateName.
+        //When You Make Variable Of Type func -> (func fun01), This Reference (fun01) Hold Address Of Function Take 2 Parameters Of Type (int) And Return (string). 
+
+        //func fun01 = delegate (int num1, int num2)
+        //{
+        //    return $"Summ => {num1 + num2}";
+        //};
+        // Console.WriteLine(fun01(5, 10));
+
+        #endregion
+
     }
 }
