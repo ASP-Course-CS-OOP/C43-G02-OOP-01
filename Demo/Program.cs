@@ -42,6 +42,25 @@ namespace Demo
             //Console.WriteLine(fun01(5, 10));
             #endregion
 
+            #region Part 10 Access Modifiers for Namespace Members (file, internal, public)
+            //Namespace Members => [struct - enum - class - interface - delegate - record - nested namespaces]
+            //Allowed Access Modifiers Inside Namespace ?
+            // 1- file        2- internal[Default]     3- public
+
+            #region file
+            //Access Namespace Member (Make object From It) Inside Current File Only.
+            #endregion
+
+            #region internal [Default]
+            //You Only Can Access This Member (Make object From It) inside Current Project Only, Even If You Import This Project In Another Project.
+            #endregion
+
+            #region public
+            //Access This Member In Any Place Regardless Inside Or Outside The Project Which Member Created In.
+            #endregion
+
+            #endregion
+
         }
     }
 }
