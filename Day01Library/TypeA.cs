@@ -161,7 +161,7 @@ namespace Common
         static decimal PI = 3.14m;// Static Constant Field
         #endregion
 
-    #region Part 03 [Allowed Access Modifiers Inside Interface]
+        #region Part 03 [Allowed Access Modifiers Inside Interface]
         //All Access Modifiers Except [ Private & File ].
         /*
              * 1- Private Protected
@@ -172,7 +172,49 @@ namespace Common
          */
         #endregion
 
-    #endregion
+        #endregion
+
+    #region Part 06 Namespace Members - Enum
+        //It's Value Type Make Me To Represent Constant Values In One Place That Related To Each Other
+        //It's Numeric Value, By Default ( int )
+        #region enum Of Type (int)
+        public enum Gender01
+        {
+            Male, Female
+        }
+        //By Default This Enum Is ( int (4 byte)), And Every Label In It Represent Range Of Values Of ( int ) Type from (0 - 2,147,483,647) , So I Can make [2_147_483_647] Label(Value)
+
+        public enum Gender02
+        {
+            Male = 100, Female = 200
+        }
+
+        public enum Gender03
+        {
+            //Male = 100, Female = 21474836478 // Error, Because Maximum Value Of Type (int) is (2_147_483_647)
+        }
+
+        //If You Make Variable Of Type Gender(int Type) => it will be 4 byte.
+        #endregion
+
+        #region enum Of Type (byte)
+        //But In Usual Cases, You Don't Make This Number Of Labels => 2,147,483,647. 
+        //So Save Memory And Make enum Of Type Byte (1 byte), So When Make Variable Of Type Gender => it Will Take only 1byte From Memory.
+        //Range Values Of Byte => (0 - 255), Mean That You Can Only Make (256) Label/Value.
+
+        public enum Gender04 : byte
+        {
+            //           0     1
+            Male, Female
+        }
+
+        public enum Gender05 : byte
+        {
+            //              100          256
+            //            Male=100, Female = 256 // Error, Because The Max Value Of Byte => (255).
+        }
+        #endregion
+        #endregion
 
     }
 }
