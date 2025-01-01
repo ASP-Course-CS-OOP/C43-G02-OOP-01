@@ -4,7 +4,7 @@ using Common;//I make It "Common" Global Using In Properties OF "Demo" Project =
 using static Common.IExample;
 namespace Demo
 {
-    internal class Program:/*EmployeeBase03,*/EmployeeBase04
+    internal class Program :/*EmployeeBase03,*//*EmployeeBase04,*/TypeAEX02
     {
         #region part 12 [private protected]
         public void DisplayAge03()
@@ -16,8 +16,20 @@ namespace Demo
         #region part 12 [protected]
         public void DisplayAge04()
         {
-            Console.WriteLine(Age);//[Valid] => Could Access The Field "Age" Because it's "protected" mean that i can access it in classes inherit from EmployeeBase03 Regardless in same assemply/project or not and i in different project (Demo).
+            Console.WriteLine(/*Age*/);//[Valid] => Could Access The Field "Age" Because it's "protected" mean that i can access it in classes inherit from EmployeeBase03 Regardless in same assemply/project or not and i in different project (Demo).
         }
+        #endregion
+
+        #region Part 13 Access Modifiers (private protected, protected, internal protected) EX02 [In Another Project [Demo] ].
+        #region Inheritence Scope
+        public void DisplayAge05()
+        {
+            //H = 0;//[Error], Because The Field "H" Inside The Class "TypeAEX02" is "Private", So You Can't Access It From Another Class Even If This Class Inherit From "TypeAEX02" Class.
+            //X = 5;//[Error], Because The Field "X" Inside The Class "TypeAEX02" is "private protected", So You Can't Access It From Another Class Inherit From "TypeAEX02" Class In Another Project, You Only Can Access It Throw Class Inherit From "TypeAEX02" But In Same Project Of "TypeAEX02" Class Which Is "Common project".
+            Y = 10;//[Valid], Because The Field "Y" Inside The Class "TypeAEX02" is "protected", So You Can Access It From Another Class Inherit From "TypeAEX02" Class In Another Project As "private" field, And You Can Access It Throw Class Inherit From "TypeAEX02" In Same Project Of "TypeAEX02" Class Which Is "Common project" As "Private" field.
+            Z = 15;//[Valid], Because The Field "Z" Inside The Class "TypeAEX02" is "internal protected", So You Can Access It From Another Class Inherit From "TypeAEX02" Class In Another Project As "private" field, And You Can Access It Throw Class Inherit From "TypeAEX02" In Same Project Of "TypeAEX02" Class Which Is "Common project" As "internal" field.
+        }
+        #endregion
         #endregion
 
         static void Main(string[] args)
@@ -90,7 +102,100 @@ namespace Demo
             //p04.DisplayID();// DisplayId() Method is internal in BaseClass (EmployeeBase04) So you Can Access It Only Throw Object From Class Inherit From EmployeeBase04 But In Same Assemply/Project (Common) Only.
             #endregion
 
-        
+            #region Part 13 Access Modifiers (private protected, protected, internal protected) EX02 [ In Another Project [Demo] ]
+
+            #region Accessibility Scope [Without Inheritence Scope]
+            TypeAEX02 objAEX021 = new TypeAEX02();
+            //objAEX02.X = 10;//[Not Valid] => Can't Access The Field "X" Because it's "private" Accessibility Scope.
+            //objAEX02.Y = 20;//[Not Valid] => Can't Access The Field "Y" Because it's "private" Accessibility Scope.
+            //objAEX02.Z = 30;//[Not Valid] => can't Access The Field "Z" Because it's "internal" Accessibility Scope and i'm in "Demo" Project [Not int the same Project of "TypeAEX02" class => "Common"]. 
+            #endregion
+
+            #region Summary
+            //Accessibility Scope => Mean That Make object From Class Like "TypeA" Inside The Project Of "TypeA" [Common] Or Another Project [Demo] And Check If This object Could Access Fields Of The Class "TypeA". [ private - internal - public]
+            //Inheritance Scope => Mean That Make Child Class And Check If This Child Class Inherit The Fields Of Parent Class Or Not [ private protected - protected - internal protected ].
+
+            #region private
+
+            #region Accessibility Scope
+            //private Field Accessed Only Inside The Class Itself.[Encapsulation].
+            #endregion
+
+            #region Inheritence Scope
+            //Private Field Not Inherited.
+            #endregion
+
+            #endregion
+
+            #region internal
+
+            #region Accessibility Scope
+            //internal Field Accessed Through object From Class Inside The Same Project Only (Institiation/object must taked in place inside project of the class that this object taked from it)
+            #endregion
+
+            #region Inheritence Scope
+            //internal field inherited to class that inherit from this base class but in same assembly/project only.
+            #endregion
+
+            #endregion
+
+            #region public
+
+            #region Accessibility Scope
+            //public field accessed everywhere, throw object from this class regardless this institiation/object made in same project or not. 
+            #endregion
+
+            #region Inheritence Scope
+            //public field inherited to child classes that inherit this base class, Regardless those child classes are in same project of base class or not.
+            //This Field Inherited As "public" Field.
+            #endregion
+
+            #endregion
+
+            #region private protected
+
+            #region Accessibility Scope
+            //private protected field accessed only inside the class itself. [encapsulation]
+            #endregion
+
+            #region Inheritence Scope
+            //private protected field inherited to child classes that inherit this base class , but in case those child classes in same project of base class only.
+            //this field inherited as "private" field.
+            #endregion
+
+            #endregion
+
+            #region protected
+
+            #region Accessibility Scope
+            //protected field accessed only inside class [Encapsulation], it has inheritence scope only, mean that if you make object from this class that contain this protected field, this object can't access this protected field.
+            //same as private field in accessibility scope, but protected field has inheritence scope.
+            #endregion
+
+            #region Inheritence Scope
+            //protected field inherited to child classes that inherit from this base class, regardless those child classes are in same project of base class or not.
+            //this protected field inherited as "private" field inside child class that inherit base class in same project & inherited as "private" field inside child class that inherit base class in another project.
+            #endregion
+
+            #endregion
+
+            #region internal protected
+
+            #region Accessibility Scope
+            //internal protected field accessed throw object from this class that this field in it, but in case this institiation/object happen in same project of this class only.
+            #endregion
+
+            #region Inheritence Scope
+            //internal protected field inherited to child classes that inherit from this base class Regardless those child classes inside the smae project of base class or not 
+            //this internal protected field inherited as "internal" field inside child class that inherit base class in same project & inherited as "private" field inside child class that inherit base class in another project.
+            #endregion
+
+            #endregion
+
+            #endregion
+
+            #endregion
+
         }
     }
 }
