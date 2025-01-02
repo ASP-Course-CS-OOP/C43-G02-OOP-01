@@ -4,6 +4,30 @@ using Common;//I make It "Common" Global Using In Properties OF "Demo" Project =
 using static Common.IExample;
 namespace Demo
 {
+    #region Part 15 Enum
+    public enum Gender
+    {
+        Male, Female
+    }
+    public enum Grade:byte//I Know Grade Values Of Any Faculty, So I Can Represent Them In DataType(enum)=> "Grade".
+    {
+        A,B,C,D,F
+    }
+    public enum RouteBranch:byte
+    {
+        Dokki,Maadi,BNS,Alex,SmartVillage//-> Labels That Represent Values of Type byte
+//        0     1    2   3      4          -> Values Of Type byte
+    }
+    public class Person
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public int salary { get; set; }
+        public Gender gender { get; set; }//I Know Gender Values [Male,Female] no else, So Restrict Values of Gender In Enum "Gender"
+        public Grade grade { get; set; }
+        public RouteBranch branch { get; set; }
+    }
+    #endregion
     internal class Program :/*EmployeeBase03,*//*EmployeeBase04,*/TypeAEX02
     {
         #region part 12 [private protected]
@@ -88,13 +112,13 @@ namespace Demo
             #endregion
 
             #region Part 11 Access Modifiers (private, internal, public) Inside Members Of Namespace
-            TypeR objR = new TypeR();//You Allowed To Make object From This Class "TypeR" because It's public in "Common" Project.
+            //TypeR objR = new TypeR();//You Allowed To Make object From This Class "TypeR" because It's public in "Common" Project.
             //objR.X = 10;//Error, Because The Field (X) Inside The Class (TypeR) is Private. 
             //objR.Y = 10;//Error, Because The Field (Y) Inside The Class (TypeR) is internal, Mean That Accessed Only Inside The Project ( Common ).  
-            objR.Z = 10;//Can Access Field (Z) Because it's public, Mean That it Accessed EveryWhere Inside & Outside The Project (Common).
-            Console.WriteLine(objR.Z);//10
+            //objR.Z = 10;//Can Access Field (Z) Because it's public, Mean That it Accessed EveryWhere Inside & Outside The Project (Common).
+            //Console.WriteLine(objR.Z);//10
 
-            objR.AccessX();//0 => Because The Default Value Of int Field is (0).
+            //objR.AccessX();//0 => Because The Default Value Of int Field is (0).
             #endregion
 
             #region part 12 [internal Method Inside Parent Class And Take object from Child Class That Inherit From Base Class And Try to Access The internal Method inside The Parent Class throw Child class but in different project [Demo]] [Invalid => Method is internal]
@@ -192,6 +216,76 @@ namespace Demo
 
             #endregion
 
+            #endregion
+
+            #endregion
+
+            #region Part 15 Enum - Namespace Member - User Define Type
+            //It's Just DataType That Represent Group Of Values That I Know Them, Like ( Gender=>[Male,Female] ),
+            //So I Need To Represent Those Values Into DataType[enum],
+            //By Default enum is of Type (int), Mean That When Take Variable Of Type Enum, It Will Take 4 bytes In Memory.
+            //enum Is Rerepresentation Of Numeric Types (By Default int) , Represented In Labels.
+
+            #region Ex01
+            //Person p01 = new Person();
+            //p01.Id = 1000;
+            //p01.Name = "Eslam";
+            //p01.salary = 10_000;
+            //p01.gender = Gender.Male;
+            //p01.grade = Grade.A;
+            //p01.branch = RouteBranch.Dokki;
+
+            //Console.WriteLine($"Id => {p01.Id}");//1000
+            //Console.WriteLine($"Name => {p01.Name}");//Eslam
+            //Console.WriteLine($"salary => {p01.salary}");//10000
+            //Console.WriteLine($"Gender => {p01.gender}");//Male 
+            //Console.WriteLine($"Gender => {p01.grade}");//A 
+            //Console.WriteLine($"Branch => {p01.branch}");//A 
+            #endregion
+
+            #region Ex02
+            //Gender gender;//Variable "gender" of Type ValueType(enum) => "Gender", Take 4 bytes in memory
+            //gender = Gender.Female;
+
+            //Console.WriteLine(gender);//Female
+            #endregion
+
+            #region Ex03
+            //Grade MyGrade = Grade.D;
+
+            //if(MyGrade == Grade.A)
+            //    Console.WriteLine("Excellent");
+            //Console.WriteLine("Poor");
+            #endregion
+
+            #region Ex04
+            //Grade g01 = 3;//Error, Because You Need To Tell Compiler That See This Value As (Grade) Or As (Label)
+            //Grade g01 = (Grade)3;
+            //Console.WriteLine(g01);//D
+
+            //Grade g02 = (Grade)10;//There Is No Representation (Label) For Value (10) In The enum (Grade), So It Will Print Value itself (10).
+            //Console.WriteLine(g02);//10
+
+            //Grade g03 = (Grade)1532362561515;//Error, Because The enum(Grade) is of numeric type(int) which represent numeric values from ( 0 - 2,147,483,647 )
+            ////And (1532362561515) is long value that Exceed This Numeric Value(2147483647), So Use enum of type long represent long values like (1532362561515).
+
+            //Grade g04 = (Grade)255;//There Is No Representation (Label) For Value (255) In The enum (Grade) of type byte, So It Will Print Value itself (255).
+            //Console.WriteLine(g04);//255
+
+            //Grade g05 = (Grade)256;//The enum(Grade) of type byte That Represent Values from 0 - 255 in Labels, Can't Represent 256 As byte Value in Label.
+
+            #endregion
+
+            #region Ex05
+            //RouteBranch b01 = RouteBranch.Dokki;
+            //Console.WriteLine(b01);//Dokki
+            #endregion
+
+            #region enum Summary
+            //enum is Rerepresentation of numeric values/Types Like (int) in Labels
+            //Always Make enum to be representation of byte values/types as long as i don't need more than 256 value/label 
+            //So save memory, because when make variable of type enum represented type values, it will take just 1 byte from memory. 
+            //every label represent byte value, compiler give every label value of type byte start from 0 - 255.
             #endregion
 
             #endregion
