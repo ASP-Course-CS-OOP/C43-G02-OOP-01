@@ -1,18 +1,19 @@
 ﻿namespace Demo
 {
+
     #region Part 15 Enum
     public enum Gender
     {
-        Male=1, Female=2
+        Male = 1, Female = 2
     }
-    public enum Grade:byte//I Know Grade Values Of Any Faculty, So I Can Represent Them In DataType(enum)=> "Grade".
+    public enum Grade : byte//I Know Grade Values Of Any Faculty, So I Can Represent Them In DataType(enum)=> "Grade".
     {
-        A,B,C,D,F
+        A, B, C, D, F
     }
-    public enum RouteBranch:byte
+    public enum RouteBranch : byte
     {
-        Dokki,Maadi,BNS,Alex,SmartVillage//-> Labels That Represent Values of Type byte
-//        0     1    2   3      4          -> Values Of Type byte
+        Dokki, Maadi, BNS, Alex, SmartVillage//-> Labels That Represent Values of Type byte
+                                             //        0     1    2   3      4          -> Values Of Type byte
     }
     public class Person
     {
@@ -24,8 +25,32 @@
         public RouteBranch branch { get; set; }
     }
     #endregion
+
+    #region Part 17 Enum -  Permissions Example
+
+    #region Ex01 - Before using [Flags] Attribute
+
+    enum Permission01 : byte
+    {
+        Read = 1, Write = 2, Delete = 4, Update = 8
+    }
+
+    #endregion
+
+    #region Ex01 - Before using [Flags] Attribute
+    [Flags]
+    enum Permission02 : byte
+    {
+        Read = 1, Write = 2, Delete = 4, Update = 8, Test = 16
+    }
+
+    #endregion
+
+    #endregion
+
     internal class Program :/*EmployeeBase03,*//*EmployeeBase04,*/TypeAEX02
     {
+
         #region part 12 [private protected]
         public void DisplayAge03()
         {
@@ -461,7 +486,30 @@
 
             #endregion
 
+            #region Part 17 Enum -  Permissions Example
 
+            #region Ex01 Without [Flags] 
+
+            //Permission01 MyPermissions01 = (Permission01)3;//I need To Say That I Have (Read,Write) Permissions By Combine The Value Of The Labels (Read = 1, Write = 2).
+            ////But The Default Behavior Of Compiler is To Try To Found The Label Thar Represent The Value (3) in Permission enum but not found it, So Return (3).
+            //Console.WriteLine(MyPermissions01);//3
+
+            ////So We Need To Add new Behavior For Searching on Matched Value in enum To Combine Allowed LabelValues That match the value, like if (3) Combine (read,write) that are representation for (1,2).
+            ////To Add This Behavior, We use [Flags] Attribute.
+
+            #endregion
+
+            #region Ex02 - Using [Flags]
+
+            Permission02 MyPermissions02 = (Permission02)3;
+            Console.WriteLine(MyPermissions02);//Read,Write
+
+            Permission02 MyPermissions03 = (Permission02)31;
+            Console.WriteLine(MyPermissions03);//Read, Write, Delete, Update, Test
+
+            #endregion
+
+            #endregion
 
         }
     }
