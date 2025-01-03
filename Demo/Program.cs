@@ -1,13 +1,9 @@
-﻿using System;
-using System.Security.AccessControl;
-using Common;//I make It "Common" Global Using In Properties OF "Demo" Project => So I Can Use Items Of This Name Space Inside Any File OF "Demo" Project Without Writing "Using Common". 
-using static Common.IExample;
-namespace Demo
+﻿namespace Demo
 {
     #region Part 15 Enum
     public enum Gender
     {
-        Male, Female
+        Male=1, Female=2
     }
     public enum Grade:byte//I Know Grade Values Of Any Faculty, So I Can Represent Them In DataType(enum)=> "Grade".
     {
@@ -289,6 +285,183 @@ namespace Demo
             #endregion
 
             #endregion
+
+            #region Part 16 Enum - Casting - Casting From String To enum Using Methods Of (Enum) Class => [ Enum.Parse() - Enum.TryParse() ].
+
+            #region Parse() -> Enum.Parse(typeof(enum),string) - Enum.Parse<enum>(string) .
+            #region Enum.Parse(typeof(enum),string) => Cause Boxing & UnBoxing [Before Generics] - Depends On object instead of Generics which cause Boxing & UnBoxing.
+            //string gender = "Male";
+            //Enum.Parse(typeof(Gender), gender);//This Method "Parse()" Return object if The String "Male" Match Label In enum "Gender".
+            ////In This Case, "Male" is label in "Gender" enum, so "Parse()" Method return the value of this label "Male" which is "0" in enum. 
+            ////But Parse() return object, so this value "0" will boxing inside object in heap and Parse() return the address of this object. 
+
+            ////Gender g01 = Enum.Parse(typeof(Gender), gender);//Error, Because (g01) is variable in stack that hold values, and Parse() return object, so must unboxing the object that contain "0" to value cause "UnBoxing".
+
+            //Gender g01 =(Gender) Enum.Parse(typeof(Gender), gender);
+            //Console.WriteLine(g01);//Male
+            #endregion
+
+            #region Enum.Parse<EnumType>(String) => Not Cause Boxing & UnBoxing [With Generics].
+
+            #region Casting From String To enum Done => Not Throw exception.
+            //Gender g01 = Enum.Parse<Gender>("Male");//Cast String "Male" To enum "Gender", But Not Cause [Boxing & UnBoxing].
+            //Console.WriteLine(g01);//Male 
+            #endregion
+
+            #region Casting from String To enum Fail => Throw Exception.
+
+            //Gender g02 = Enum.Parse<Gender>("WrongLabel");
+            //Console.WriteLine(g02);//Throw 
+
+            #endregion
+
+            #endregion
+
+            #region Casting from String "male" To enum "Gender" Fail => Throw Exception => Because "male" is not recognized as label in "Gender" enum.
+
+            #region Before Generics Approach => Enum.Parse(typeof(Gender),"male");
+
+            //Gender g03 = (Gender)Enum.Parse(typeof(Gender), "male");
+            //Console.WriteLine(g03);//Throw Exception. 
+
+            #endregion
+
+            #region With Generics Approach => Enum.Parse<Gender>("male");
+
+            //Gender g04 = Enum.Parse<Gender>("male");
+            //Console.WriteLine(g04);//Throw Exception. 
+
+            #endregion
+
+            #endregion
+
+            #region Casting from String "male" To enum "Gender" Done => Using Parameter Of Ignore Case Sensitivity.
+
+            #region Before Generics Approach => Enum.Parse(typeof(Gender),"male",true);
+
+            //Gender g03 = (Gender)Enum.Parse(typeof(Gender), "male",true);
+            //Console.WriteLine(g03);//Male 
+
+            #endregion
+
+            #region With Generics Approach => Enum.Parse<Gender>("male",true);
+
+            //Gender g04 =Enum.Parse<Gender>("male",true);
+            //Console.WriteLine(g04);//Male 
+
+            #endregion
+
+
+            #endregion
+
+            #endregion
+
+            #region TryParse() -> Enum.TryParse(typeof(enum),string,out object?) - Enum.Parse<enum>(string,Gender) 
+
+            #region Enum.TryParse(typeof(enum),string,out object?) => Cause Boxing & UnBoxing [Before Generics] - Depends On object instead of Generics which cause Boxing & UnBoxing.
+
+            #region Ex01 - Cast Done
+
+            //Gender g01;
+            //Enum.TryParse(typeof(Gender), "Male", out object? result01 /*Boxing Value(1) of label "Male" in object and return address of this object to reference result01 in stack*/);
+            //g01 = (Gender)(result01 ?? -1);//Unboxing -> (Cast Pass) -> So Convert the object that reference (result01)refer to which contain the value of label ("Male" -> 1) to valueType which is of type Gender.
+            ////(-1) => Not Represented as label in The Gender Generic, So It's Can Indicate To Fail Casting 
+            //Console.WriteLine(g01);//Male 
+
+            #endregion
+
+            #region Ex01 - Cast Fail
+
+            //Gender g02;
+            //Enum.TryParse(typeof(Gender), "Male", out object? result02);
+            //g02 = (Gender)(result02 ?? -1);//(Cast Fail) -> So the object (result01) contain/Refer to Null, and then we say if object is null put -1 in g02.
+            ////(-1) => Not Represented as label in The Gender Generic, So It's Can Indicate To Fail Casting 
+            //Console.WriteLine(g02);//-1
+
+            #endregion
+
+            #endregion
+
+            #region Enum.TryParse<enum>(string,out enum) => Not Cause Boxing & UnBoxing [With Generics].
+
+            #region Ex01 - Cast Done
+
+            //Gender g03;
+            //Enum.TryParse<Gender>("Male", out Gender result01);
+            //g03 = result01;
+            ////Casting Done (Convert from "Male" to Gender), result will contain the value of matched label, in this case will contain (1).
+
+            //Console.WriteLine(g03);//Male 
+
+            #endregion
+
+            #region Ex02 - Cast Fail
+
+            //Gender g04;
+            //Enum.TryParse<Gender>("NotLabel", out Gender result02);
+            //g04 = result02;
+            ////Casting Fail (Convert from "NotLabel" to Gender), result will contain The default value of enum valueType -> (0) ,So Note To Not Attach Label In Enum With value (0);
+
+            //Console.WriteLine(g04);//0
+
+            #endregion
+
+            #endregion
+
+            #region Casting from String "male" To enum "Gender" Fail => Throw Exception => Because "male" is not recognized as label in "Gender" enum.
+
+            #region Before Generics Approach => Enum.TryParse("male",Gender);
+
+            //Gender g05;
+            //Enum.TryParse(typeof(Gender),"male",out object? result05 );
+            //g05 = (Gender)(result05 ?? -1);
+
+            //Console.WriteLine(g05);//-1
+
+            #endregion
+
+            #region With Generics Approach => Enum.TryParse<Gender>("male",out Gender);
+
+            //Gender g06;
+            //Enum.TryParse<Gender>("male", out Gender result06);
+            //g06 = result06;
+
+            //Console.WriteLine(g04);//0
+
+            #endregion
+
+            #endregion
+
+            #region Casting from String "male" To enum "Gender" Done => Using Parameter Of Ignore Case Sensitivity.
+
+            #region Before Generics Approach => Enum.TryParse(typeof(Gender),"male",true,out object?);
+
+            //Gender g07;
+            //Enum.TryParse(typeof(Gender), "male", true, out object? result07);
+            //g07 = (Gender)(result07 ?? -1);
+
+            //Console.WriteLine(g07);//Male 
+
+            #endregion
+
+            #region With Generics Approach => Enum.TryParse<Gender>("male",true,out Gender);
+
+            //Gender g08; 
+            //Enum.TryParse<Gender>("male", true,out Gender result08);
+            //g08 = result08;
+
+            //Console.WriteLine(g08);//Male 
+
+            #endregion
+
+
+            #endregion
+
+            #endregion
+
+            #endregion
+
+
 
         }
     }
