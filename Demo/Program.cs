@@ -488,6 +488,7 @@
 
             #region Part 17 Enum -  Permissions Example
 
+            #region Part01
             #region Ex01 Without [Flags] 
 
             //Permission01 MyPermissions01 = (Permission01)3;//I need To Say That I Have (Read,Write) Permissions By Combine The Value Of The Labels (Read = 1, Write = 2).
@@ -501,11 +502,43 @@
 
             #region Ex02 - Using [Flags]
 
-            Permission02 MyPermissions02 = (Permission02)3;
-            Console.WriteLine(MyPermissions02);//Read,Write
+            //Permission02 MyPermissions02 = (Permission02)3;
+            //Console.WriteLine(MyPermissions02);//Read,Write
 
-            Permission02 MyPermissions03 = (Permission02)31;
-            Console.WriteLine(MyPermissions03);//Read, Write, Delete, Update, Test
+            //Permission02 MyPermissions03 = (Permission02)31;
+            //Console.WriteLine(MyPermissions03);//Read, Write, Delete, Update, Test
+
+            #endregion
+            #endregion
+
+            #region Part02 - Using Bitwise Operators To [Add - Delete - ...] Permissions.
+            Permission02 userPermission = (Permission02)3;//Read, Write
+
+            #region Add Update Permission Using | (or operator).
+
+            //userPermission = userPermission | Permission02.Update;//3[0011] | 8[1000] = 1011 => 11[Read,Write,Update]
+            //Console.WriteLine(userPermission);//Read, Write, Update
+
+            #endregion
+
+            #region Delete Read Permission Using [&,~] Operators .
+
+            //userPermission = userPermission & ~(Permission02.Read);//11[1011] & ~1(0001) = [1011] & [1110] = [1010] = 10 => Write,Update
+            //Console.WriteLine(userPermission);//Write, Update
+
+            #endregion
+
+            #region Xor operator [^] => If Permission Not Exist -> (Remove it), If Not Exist (Add It).
+            //Console.WriteLine(userPermission);//Write, Update
+
+            //userPermission = userPermission ^ Permission02.Test;
+            //Console.WriteLine(userPermission);//Write, Update, Test
+
+            //userPermission = userPermission ^ Permission02.Test;
+            //Console.WriteLine(userPermission);//Write, Update
+
+
+            #endregion
 
             #endregion
 
