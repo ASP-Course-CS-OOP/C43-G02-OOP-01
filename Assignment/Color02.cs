@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    [Flags]
-    internal enum Permission:byte
+    internal enum Color02:byte
     {
-        Read = 1,Write = 2, Delete = 4,Execute = 8
+        Red=1, Green, Blue
     }
 }

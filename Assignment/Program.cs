@@ -84,14 +84,14 @@ namespace Assignment
 
             #endregion
 
-            #region Q3. Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum.
+            #region Q3.Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum.
             //Permission02 p01 = (Permission02)3;//Read, Write
 
             #region Add Delete Permission
 
-            //Add Delete Permission
-            p01 = p01 | Permission02.Delete;//3[0011] | 4[0100] = 0111[7] => Read, Write, Delete
-            Console.WriteLine(p01);
+            ////Add Delete Permission
+            //p01 = p01 | Permission02.Delete;//3[0011] | 4[0100] = 0111[7] => Read, Write, Delete
+            //Console.WriteLine(p01);
 
             #endregion
 
@@ -110,6 +110,28 @@ namespace Assignment
             //    Console.WriteLine("You Don't Have Read Permission!");
 
             #endregion
+
+            #endregion
+
+            #region Q4.Create an enum called "Colors" with the basic colors (Red, Green, Blue) as its members. Write a C# program that takes a color name as input from the user and displays a message indicating whether the input color is a primary color or not.
+            
+            //bool isParsed = true;
+            //Console.Write("Enter Color Name: ");
+            //isParsed = Enum.TryParse<Color02>(Console.ReadLine(), true, out Color02 result);
+
+            //if (isParsed)
+            //{
+            //    switch (result)
+            //    {
+            //        case Color02.Red:
+            //        case Color02.Green:
+            //        case Color02.Blue:
+            //            Console.WriteLine($"{result} Is Basic Color.");
+            //                break;
+            //    }
+            //}
+            //else
+            //    Console.WriteLine($"Isn't Basic Color.");
 
             #endregion
 
