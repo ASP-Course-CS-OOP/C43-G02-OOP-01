@@ -1,13 +1,11 @@
-﻿namespace Assignment
+﻿using System.Transactions;
+
+namespace Assignment
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            #region 1- Create an enum called "WeekDays" with the days of the week (Monday to Sunday) as its members. Then, write a C# program that prints out all the days of the week using this enum.
-            //WeekDays DaysOfWeek = (WeekDays)127;
-            //Console.WriteLine(DaysOfWeek);
-            #endregion
 
             #region 2.Create an enum called "Seas on" with the four seasons (Spring, Summer, Autumn, Winter) as  its members. Write a C# program that takes a season name as input from the user and displays the corresponding month range for that season. Note range for seasons ( spring march to may , summer june to august , autumn September to November , winter December to February)
             //bool isParsed = Enum.TryParse<Season>(Console.ReadLine(), true, out Season season);
@@ -80,6 +78,34 @@
             //Console.WriteLine(AllDays); 
 
             #endregion
+
+            #endregion
+
+            #region Q2.Create an enum called "Seas on" with the four seasons (Spring, Summer, Autumn, Winter) as  its members. Write a C# program that takes a season name as input from the user and displays the corresponding month range for that season. Note range for seasons ( spring march to may , summer june to august , autumn September to November , winter December to February)
+
+            //bool isParsed = true;
+            //Console.Write("Enter The Season Name: ");
+            //isParsed = Enum.TryParse<Season02>(Console.ReadLine(), true, out Season02 result);
+            //if (isParsed)
+            //{
+            //    switch (result)
+            //    {
+            //        case Season02.Spring:
+            //            Console.WriteLine("Spring => March To May.");
+            //            break;
+            //        case Season02.Summer:
+            //            Console.WriteLine("Summer => June  To August.");
+            //            break;
+            //        case Season02.Autumn:
+            //            Console.WriteLine("Autumn => September To November.");
+            //            break;
+            //        case Season02.Winter:
+            //            Console.WriteLine("Winter => December To February.");
+            //            break;
+            //    }
+            //}
+            //else
+            //    Console.WriteLine("Wrong Season Name!");
 
             #endregion
 
