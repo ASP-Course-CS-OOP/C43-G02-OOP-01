@@ -59,6 +59,31 @@
             //else
             //    Console.WriteLine("not primary color");
             #endregion
+
+
+            #region Part02
+
+            #region Q1.Create an enum called "WeekDays" with the days of the week (Monday to Sunday) as its members. Then, write a C# program that prints out all the days of the week using this enum.
+
+            #region Using Loop, Without [Flags] Attribute.
+
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    Console.Write((WeekDays)i + " ");
+            //}
+
+            #endregion
+
+            #region Using [Flags] Attribute
+
+            //WeekDays02 AllDays = (WeekDays02)127;
+            //Console.WriteLine(AllDays); 
+
+            #endregion
+
+            #endregion
+
+            #endregion
         }
     }
 }
