@@ -7,31 +7,6 @@ namespace Assignment
         static void Main(string[] args)
         {
 
-            #region 2.Create an enum called "Seas on" with the four seasons (Spring, Summer, Autumn, Winter) as  its members. Write a C# program that takes a season name as input from the user and displays the corresponding month range for that season. Note range for seasons ( spring march to may , summer june to august , autumn September to November , winter December to February)
-            //bool isParsed = Enum.TryParse<Season>(Console.ReadLine(), true, out Season season);
-
-            //if (isParsed)
-            //{
-            //    switch (season)
-            //    {
-            //        case Season.Spring:
-            //            Console.WriteLine("March to May");
-            //            break;
-            //        case Season.Summer:
-            //            Console.WriteLine("June to August");
-            //            break;
-            //        case Season.Autumn:
-            //            Console.WriteLine("September to November");
-            //            break;
-            //        case Season.Winter:
-            //            Console.WriteLine("December to February");
-            //            break;
-            //    }
-            //}
-            //else
-            //    Console.WriteLine("Not Recognized Season Name");
-            #endregion
-
             #region 3. Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum.
             //Permission permission = (Permission)3;
             //Console.WriteLine(permission);//Read Write
@@ -106,6 +81,35 @@ namespace Assignment
             //}
             //else
             //    Console.WriteLine("Wrong Season Name!");
+
+            #endregion
+
+            #region Q3. Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum.
+            //Permission02 p01 = (Permission02)3;//Read, Write
+
+            #region Add Delete Permission
+
+            //Add Delete Permission
+            p01 = p01 | Permission02.Delete;//3[0011] | 4[0100] = 0111[7] => Read, Write, Delete
+            Console.WriteLine(p01);
+
+            #endregion
+
+            #region Remove Delete Permission
+
+            //p01 = p01 & ~(Permission02.Delete);//7[0111] & ~4[0100] = 0111 & 1011 = 0011 = 3 => Read, Write
+            //Console.WriteLine(p01);//Read, Write
+
+            #endregion
+
+            #region Check If Read Permission Exist
+
+            //if((p01 & Permission02.Read) == Permission02.Read)//3[0011] & 1[0001] = [0001] => Read
+            //    Console.WriteLine("You Have Read Permission.");
+            //else
+            //    Console.WriteLine("You Don't Have Read Permission!");
+
+            #endregion
 
             #endregion
 

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    internal enum Season:byte
+    [Flags]
+    internal enum Permission02:byte
     {
-        Spring,Summer,Autumn,Winter
+        Read=1, Write=2, Delete=4, Execute=8
     }
 }
